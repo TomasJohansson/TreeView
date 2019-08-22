@@ -90,30 +90,23 @@ public class MainActivity extends AppCompatActivity {
     }
 
 
-    // TODO: the below kind code will become replaced with code that uses 'GeographicAreaRepository'
-    //  which will fetch 'GeographicArea' which will be the content/values of the nodes instead of String values as below.
     private void buildTree() {
-        for (int i = 0; i < 20; i++) {
-            TreeNode treeNode = new TreeNode(new String("Parent  " + "No." + i));
-            treeNode.setLevel(0);
-            if(i != 3) { // avoids creating child nodes for "parent" 3 (which then is not a parent, so the semantic in the displayed text becomes incorrect)
-                for (int j = 0; j < 10; j++) {
-                    TreeNode treeNode1 = new TreeNode(new String("Child " + "No." + j));
-                    treeNode1.setLevel(1);
-                    if(j != 5) { // avoids creating grand child nodes for child node 5
-                        // For the child node without grand children there should not be any arrow displayed.
-                        // In the demo code this can be handled in method 'SecondLevelNodeViewBinder.bindView' like this:
-                        // imageView.setVisibility(treeNode.hasChild() ? View.VISIBLE : View.INVISIBLE);
-                        for (int k = 0; k < 5; k++) {
-                            TreeNode treeNode2 = new TreeNode(new String("Grand Child " + "No." + k));
-                            treeNode2.setLevel(2);
-                            treeNode1.addChild(treeNode2);
-                        }
-                    }
-                    treeNode.addChild(treeNode1);
-                }
-            }
+        List<GeographicArea> topLevelGeographicAreas = GeographicAreaRepository.getInstance().getTopLevelGeographicAreas();
+        for (GeographicArea geographicArea : topLevelGeographicAreas) {
+            TreeNode treeNode = new TreeNode(geographicArea);
+            buildTree(geographicArea, treeNode, 0);
             root.addChild(treeNode);
+        }
+    }
+
+    // recursive method
+    private void buildTree(GeographicArea geographicArea, TreeNode treeNode, int treeNodeLevel) {
+        treeNode.setLevel(treeNodeLevel);
+        List<GeographicArea> geographicSubAreas = geographicArea.getGeographicSubAreas();
+        for (GeographicArea geographicSubArea : geographicSubAreas) {
+            TreeNode subTreeNode = new TreeNode(geographicSubArea);
+            treeNode.addChild(subTreeNode);
+            buildTree(geographicSubArea, subTreeNode, treeNodeLevel + 1); // recursive call
         }
     }
 
