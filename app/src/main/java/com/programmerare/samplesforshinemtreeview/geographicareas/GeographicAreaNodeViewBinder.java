@@ -15,10 +15,12 @@ import me.texy.treeview.base.CheckableNodeViewBinder;
 public class GeographicAreaNodeViewBinder extends CheckableNodeViewBinder {
     TextView textView;
     ImageView imageView;
+    ImageView mapIconImageView;
     public GeographicAreaNodeViewBinder(View itemView) {
         super(itemView);
         textView = (TextView) itemView.findViewById(R.id.node_name_view);
         imageView = (ImageView) itemView.findViewById(R.id.arrow_img);
+        mapIconImageView = (ImageView) itemView.findViewById(R.id.map_icon);
     }
 
     @Override
@@ -39,6 +41,15 @@ public class GeographicAreaNodeViewBinder extends CheckableNodeViewBinder {
 
         // note the preconditions for below method regarding the itemView (must be RelativeLayout containing a linearLayout with the id node_container)
         ColorMarginHeightUtility.getInstance().setColorMarginHeight(treeNode, this.itemView);
+
+
+        final GeographicArea geographicArea = (GeographicArea)treeNode.getValue();
+        showMapIconOnlyIfCountryLevel(geographicArea);
+    }
+
+    private void showMapIconOnlyIfCountryLevel(GeographicArea geographicArea) {
+        mapIconImageView.setVisibility(geographicArea.isCountryLevel() ? View.VISIBLE : View.INVISIBLE);
+        // TODO make the map icon clickable 
     }
 
     @Override
