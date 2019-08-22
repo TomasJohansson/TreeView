@@ -1,8 +1,13 @@
 package com.programmerare.samplesforshinemtreeview.geographicareas;
 
+import android.content.Context;
+import android.content.Intent;
+import android.net.Uri;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
+
+import androidx.appcompat.app.AlertDialog;
 
 import me.texy.treeviewdemo.R;
 import me.texy.treeview.TreeNode;
@@ -47,9 +52,33 @@ public class GeographicAreaNodeViewBinder extends CheckableNodeViewBinder {
         showMapIconOnlyIfCountryLevel(geographicArea);
     }
 
-    private void showMapIconOnlyIfCountryLevel(GeographicArea geographicArea) {
+    private void showMapIconOnlyIfCountryLevel(final GeographicArea geographicArea) {
         mapIconImageView.setVisibility(geographicArea.isCountryLevel() ? View.VISIBLE : View.INVISIBLE);
-        // TODO make the map icon clickable 
+        if(geographicArea.isCountryLevel()) {
+            mapIconImageView.setVisibility(View.VISIBLE);
+            mapIconImageView.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View view) {
+                    showMapForGeographicArea(geographicArea, mapIconImageView.getContext());
+                }
+            });
+        }
+    }
+
+    private void showMapForGeographicArea(
+        final GeographicArea geographicArea,
+        final Context context
+    ) {
+        AlertDialog alertDialog = new AlertDialog.Builder(context).create();
+        alertDialog.setTitle("TODO: Show a map");
+        alertDialog.setMessage("TODO: Show a map for the geographic area: " + geographicArea.getName());
+        alertDialog.show();
+        // Instead of the above, code like below might be used for showing a map with the clicked geographicArea e.g. country
+        // https://developers.google.com/maps/documentation/urls/android-intents
+        // Uri gmmIntentUri = Uri.parse("geo:0,0?q=" + geographicArea.getName());
+        // Intent mapIntent = new Intent(Intent.ACTION_VIEW, gmmIntentUri);
+        // mapIntent.setPackage("com.google.android.apps.maps");
+        // context.startActivity(mapIntent);
     }
 
     @Override
