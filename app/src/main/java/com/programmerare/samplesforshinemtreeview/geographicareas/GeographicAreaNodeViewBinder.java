@@ -1,14 +1,11 @@
 package com.programmerare.samplesforshinemtreeview.geographicareas;
 
 import android.content.Context;
-import android.content.Intent;
-import android.net.Uri;
+import android.graphics.Color;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
-
 import androidx.appcompat.app.AlertDialog;
-
 import me.texy.treeviewdemo.R;
 import me.texy.treeview.TreeNode;
 import me.texy.treeview.base.CheckableNodeViewBinder;
@@ -21,11 +18,13 @@ public class GeographicAreaNodeViewBinder extends CheckableNodeViewBinder {
     TextView textView;
     ImageView imageView;
     ImageView mapIconImageView;
+    TextView textViewPopulation;
     public GeographicAreaNodeViewBinder(View itemView) {
         super(itemView);
         textView = (TextView) itemView.findViewById(R.id.node_name_view);
         imageView = (ImageView) itemView.findViewById(R.id.arrow_img);
         mapIconImageView = (ImageView) itemView.findViewById(R.id.map_icon);
+        textViewPopulation = (TextView) itemView.findViewById(R.id.textViewpopulation);
     }
 
     @Override
@@ -47,9 +46,22 @@ public class GeographicAreaNodeViewBinder extends CheckableNodeViewBinder {
         // note the preconditions for below method regarding the itemView (must be RelativeLayout containing a linearLayout with the id node_container)
         ColorMarginHeightUtility.getInstance().setColorMarginHeight(treeNode, this.itemView);
 
-
         final GeographicArea geographicArea = (GeographicArea)treeNode.getValue();
         showMapIconOnlyIfCountryLevel(geographicArea);
+        showPopulationInformationIfAvailable(geographicArea);
+    }
+
+    private void showPopulationInformationIfAvailable(final GeographicArea geographicArea) {
+        textViewPopulation.setVisibility(geographicArea.isPopulationSpecified() ? View.VISIBLE : View.INVISIBLE);
+        if(!geographicArea.isPopulationSpecified()) return;
+
+        final int population = geographicArea.getPopulation();
+        textViewPopulation.setText("Population: " + population);
+        int backgroundColorForPopulationText = Color.RED;
+        if(population > 30000000) backgroundColorForPopulationText = Color.GREEN;
+        if(population > 66000000) backgroundColorForPopulationText = Color.BLUE;
+        textViewPopulation.setBackgroundColor(backgroundColorForPopulationText);
+        textViewPopulation.setTextColor(backgroundColorForPopulationText == Color.BLUE ? Color.WHITE : Color.BLACK);
     }
 
     private void showMapIconOnlyIfCountryLevel(final GeographicArea geographicArea) {
@@ -75,6 +87,8 @@ public class GeographicAreaNodeViewBinder extends CheckableNodeViewBinder {
         alertDialog.show();
         // Instead of the above, code like below might be used for showing a map with the clicked geographicArea e.g. country
         // https://developers.google.com/maps/documentation/urls/android-intents
+        // import android.content.Intent;
+        // import android.net.Uri;
         // Uri gmmIntentUri = Uri.parse("geo:0,0?q=" + geographicArea.getName());
         // Intent mapIntent = new Intent(Intent.ACTION_VIEW, gmmIntentUri);
         // mapIntent.setPackage("com.google.android.apps.maps");
