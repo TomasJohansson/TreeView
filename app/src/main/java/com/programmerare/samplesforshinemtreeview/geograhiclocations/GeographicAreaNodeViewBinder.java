@@ -1,4 +1,4 @@
-package me.texy.treeviewdemo;
+package com.programmerare.samplesforshinemtreeview.geograhiclocations;
 
 import android.view.View;
 import android.widget.ImageView;
@@ -12,11 +12,10 @@ import me.texy.treeview.base.CheckableNodeViewBinder;
  * Created by zxy on 17/4/23.
  */
 
-public class SecondLevelNodeViewBinder extends CheckableNodeViewBinder {
-
+public class GeographicAreaNodeViewBinder extends CheckableNodeViewBinder {
     TextView textView;
     ImageView imageView;
-    public SecondLevelNodeViewBinder(View itemView) {
+    public GeographicAreaNodeViewBinder(View itemView) {
         super(itemView);
         textView = (TextView) itemView.findViewById(R.id.node_name_view);
         imageView = (ImageView) itemView.findViewById(R.id.arrow_img);
@@ -29,7 +28,7 @@ public class SecondLevelNodeViewBinder extends CheckableNodeViewBinder {
 
     @Override
     public int getLayoutId() {
-        return R.layout.item_second_level;
+        return R.layout.item_first_level;
     }
 
     @Override

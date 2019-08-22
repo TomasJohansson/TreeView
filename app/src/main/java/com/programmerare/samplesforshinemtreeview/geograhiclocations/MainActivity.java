@@ -1,4 +1,4 @@
-package me.texy.treeviewdemo;
+package com.programmerare.samplesforshinemtreeview.geograhiclocations;
 
 import android.graphics.Color;
 import android.os.Build;
@@ -17,6 +17,7 @@ import java.util.List;
 
 import me.texy.treeview.TreeNode;
 import me.texy.treeview.TreeView;
+import me.texy.treeviewdemo.R;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -33,7 +34,7 @@ public class MainActivity extends AppCompatActivity {
 
         root = TreeNode.root();
         buildTree();
-        treeView = new TreeView(root, this, new MyNodeViewFactory());
+        treeView = new TreeView(root, this, new GeographicAreaNodeViewFactory());
         View view = treeView.getView();
         view.setLayoutParams(new ViewGroup.LayoutParams(
                 ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.MATCH_PARENT));
