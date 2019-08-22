@@ -28,7 +28,7 @@ public class GeographicAreaNodeViewBinder extends CheckableNodeViewBinder {
 
     @Override
     public int getLayoutId() {
-        return R.layout.item_first_level;
+        return R.layout.sample_item_geographic_area;
     }
 
     @Override
