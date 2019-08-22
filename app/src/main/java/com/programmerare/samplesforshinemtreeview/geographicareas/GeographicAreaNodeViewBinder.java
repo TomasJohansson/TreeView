@@ -1,4 +1,4 @@
-package com.programmerare.samplesforshinemtreeview.geograhiclocations;
+package com.programmerare.samplesforshinemtreeview.geographicareas;
 
 import android.view.View;
 import android.widget.ImageView;
