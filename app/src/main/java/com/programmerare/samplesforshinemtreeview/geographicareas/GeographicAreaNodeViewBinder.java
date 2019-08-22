@@ -61,7 +61,7 @@ public class GeographicAreaNodeViewBinder extends CheckableNodeViewBinder {
         if(population > 30000000) backgroundColorForPopulationText = Color.GREEN;
         if(population > 66000000) backgroundColorForPopulationText = Color.BLUE;
         textViewPopulation.setBackgroundColor(backgroundColorForPopulationText);
-        textViewPopulation.setTextColor(backgroundColorForPopulationText == Color.BLUE ? Color.WHITE : Color.BLACK);
+        textViewPopulation.setTextColor(backgroundColorForPopulationText == Color.GREEN ? Color.BLACK: Color.WHITE);
     }
 
     private void showMapIconOnlyIfCountryLevel(final GeographicArea geographicArea) {
