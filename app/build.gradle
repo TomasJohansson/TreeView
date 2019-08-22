@@ -29,6 +29,10 @@ dependencies {
     implementation 'androidx.appcompat:appcompat:1.0.0'
     implementation 'androidx.recyclerview:recyclerview:1.0.0'
     testImplementation 'junit:junit:4.12'
+
+    // https://mvnrepository.com/artifact/org.hamcrest/hamcrest
+    testImplementation  'org.hamcrest:hamcrest:2.1'
+
     implementation project(':treeview_lib')
     //implementation 'me.texy.treeview:treeview_lib:1.0.4'
 }

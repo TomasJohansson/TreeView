@@ -89,6 +89,9 @@ public class MainActivity extends AppCompatActivity {
         return stringBuilder.toString();
     }
 
+
+    // TODO: the below kind code will become replaced with code that uses 'GeographicAreaRepository'
+    //  which will fetch 'GeographicArea' which will be the content/values of the nodes instead of String values as below.
     private void buildTree() {
         for (int i = 0; i < 20; i++) {
             TreeNode treeNode = new TreeNode(new String("Parent  " + "No." + i));
