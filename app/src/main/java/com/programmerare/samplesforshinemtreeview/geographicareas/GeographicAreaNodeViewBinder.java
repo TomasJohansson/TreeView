@@ -36,6 +36,9 @@ public class GeographicAreaNodeViewBinder extends CheckableNodeViewBinder {
         textView.setText(treeNode.getValue().toString());
         imageView.setRotation(treeNode.isExpanded() ? 90 : 0);
         imageView.setVisibility(treeNode.hasChild() ? View.VISIBLE : View.INVISIBLE);
+
+        // note the preconditions for below method regarding the itemView (must be RelativeLayout containing a linearLayout with the id node_container)
+        ColorMarginHeightUtility.getInstance().setColorMarginHeight(treeNode, this.itemView);
     }
 
     @Override
