@@ -46,6 +46,8 @@ public class GeographicAreaRepository {
 //    private final static int ID_COUNTY_OF_US_NEW_YORK_STATE_ALBANY  = 10212;
 //    private final static int ID_COUNTY_OF_US_NEW_YORK_STATE_NIAGARA = 10213;
 
+    public final static int ID_CITY_OF_SWEDEN_STOCKHOLM = 30411;
+
     private static GeographicAreaRepository geographicAreaRepository = new GeographicAreaRepository();
     public static GeographicAreaRepository getInstance() {
         return geographicAreaRepository;
@@ -95,8 +97,8 @@ public class GeographicAreaRepository {
             "3043, Skåne,            3, 304",
 
             // sublevel 2 (some municipalitis in Sweden)
-            "30411, Stockholm City, 4, 3041",
             "30412, Danderyd,       4, 3041",
+            "30411, Stockholm City, 4, 3041",
             "30413, Solna,          4, 3041",
 
             "30421, Gothenburg, 4, 3042",
