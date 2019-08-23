@@ -28,6 +28,7 @@ public class GeographicAreaRepository {
 //    private final static int ID_COUNTRY_UNITED_KINGDOM = 301;
 //    private final static int ID_COUNTRY_GERMANY = 302;
 //    private final static int ID_COUNTRY_FRANCE = 303;
+//    private final static int ID_COUNTRY_SWEDEN = 304;
 //
 //    private final static int ID_COUNTRY_CHINA = 401;
 //    private final static int ID_COUNTRY_INDIA = 402;
@@ -78,6 +79,7 @@ public class GeographicAreaRepository {
             "301, United Kingdom,   2, 30,  66040000",
             "302, Germany,          2, 30,  82890000",
             "303, France,           2, 30,  65170000",
+            "304, Sweden,           2, 30,  10200000",
 
             "401, China,    2, 40",
             "402, India,    2, 40",
@@ -86,6 +88,24 @@ public class GeographicAreaRepository {
             "501, Nigeria,  2, 50",
             "502, Ethiopia, 2, 50",
             "503, Egypt,    2, 50",
+
+            // sublevel 1 (some counties in Sweden)
+            "3041, Stockholm,        3, 304",
+            "3042, Västra Götaland,  3, 304",
+            "3043, Skåne,            3, 304",
+
+            // sublevel 2 (some municipalitis in Sweden)
+            "30411, Stockholm City, 4, 3041",
+            "30412, Danderyd,       4, 3041",
+            "30413, Solna,          4, 3041",
+
+            "30421, Gothenburg, 4, 3042",
+            "30422, Borås,      4, 3042",
+            "30423, Mölndal,    4, 3042",
+
+            "30431, Malmö,          4, 3043",
+            "30432, Helsingborg,    4, 3043",
+            "30433, Lund,           4, 3043",
 
             // sublevel 1 (some US states)
             "1021, New York State,  3, 102, 19540000",
