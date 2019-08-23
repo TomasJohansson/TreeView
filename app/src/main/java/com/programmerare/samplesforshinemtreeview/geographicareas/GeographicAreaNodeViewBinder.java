@@ -58,6 +58,7 @@ public class GeographicAreaNodeViewBinder extends CheckableNodeViewBinder {
         final int population = geographicArea.getPopulation();
         textViewPopulation.setText("Population: " + population);
         int backgroundColorForPopulationText = Color.RED;
+        // There is no reason for the below chosen values, other than just making some values green and some blue and some red.
         if(population > 30000000) backgroundColorForPopulationText = Color.GREEN;
         if(population > 66000000) backgroundColorForPopulationText = Color.BLUE;
         textViewPopulation.setBackgroundColor(backgroundColorForPopulationText);
